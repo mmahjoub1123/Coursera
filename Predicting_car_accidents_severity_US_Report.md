@@ -1,6 +1,4 @@
-% Predicting car accidents severity in the US
-% Meriem Mahjoub
-% 21 september 2020
+# Predicting car accidents severity in the US
 
 # 1. Introduction
 ## 1.1 Background
