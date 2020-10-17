@@ -21,32 +21,29 @@ To analyse the problem i used these datas: A Countrywide Traffic Accident Datase
 # 3 Methodology
 ## 3.1 Data cleaning
 
-There were a lot of missing values in many columns. I decided first to drop the columns if their missing values percentage exceed **30** of the total available data, because performing **missing values fill** on the missing data and filling the missing values will be irrelevent for the final use in the model.
+There were a lot of missing values in many columns. I decided first to drop the columns if their missing values percentage exceed 30% of the total available data, because filling missing values fill on these columns will be irrelevent for the final use in the model. Then I performed missing values filling with last valid observation forward to next valid backfill.
 
-There are several problems with the dataset. First, the type of datetime columns wasn’t right. And some other columns contained values for categorical variables written in different **orthographes**. I replaced the different writings for the same value to a normalized **orthographe**. After fixing these problems i checked for outliers in the data. I found there were some extreme outliers, mostly caused by some types of small sample size problem. For example some weather descriptions had only appeared a few times in the dataset, in which the accidents severity was high. I changed the accidents severity for these columns to missing values.
+There are several problems with the dataset. First, the type of datetime columns wasn’t right. I changed the type of this column, and extracted the date and time separately. From the new date column I extracted the day of week, and created a new column specifying if it is a weekend day or not.
 
 ## 3.2 Feature selection
 
-After data cleaning, there were **x** samples and **y** features in the data. Upon examining the meaning of each feature, it was clear that there was some redundancy in the features. For example, there was a feature of the **A**, and another feature of the **B**, with the difference being that **d**. These features are problematic for two reasons: (1) The accident severity was duplicated in two features. (2) The accident’s conditions  was duplicated in multiple features.
-In order to fix this, i decided to keep all features that **a**, and dop their cumulative counterparts. There were also other redundancies, such that **a**. For features that can be obtained from the combination of other features, i decided to drop them.
-
-After discarding redundant features, I inspected the correlation of independent variables, and found several pairs that were highly correlated (Pearson correlation coefficient > 0.9). For example, **a**, **b** and **c** were highly correlated. This makes sense, after all, **reason**. From these highly correlated features, only one was kept, others were dropped from the dataset. After all, **nbfeatures** features were selected.
-
-### 3.2.1 Relationship between accident severity and time of the accident
-The hypothetis is that at night there is less visibility in the streets.
-
-### 3.2.2 Relationship between accident severity and weather conditions
+After data cleaning, there were 351362 samples and 27 features in the data. Upon examining the meaning of each feature, it was clear that there was some redundancy in the features. For example, there was a feature of the Traffic_Signal, and another feature of the Crossing, with the difference being that the Traffic_Signal is the presence of road traffic signal, and Crossing is a node where both ways are crossing (footway and street, street and railway and so on). Moreover, I inspected the correlation of independent variables, and found that this pair was highly correlated (Pearson correlation coefficient > 0.9). This makes sense. From these highly correlated features, only one was kept. I decided to keep the Crossing feature.
 
 ## 3.3 Predictive modeling
 
-There are two types of models, regression and classification, that can be used to predict accident severity. Regression models can provide additional information on the **thing**, while classification models focus on the level of severity. Therefore, in this study, I carried out classification modeling.
+There are two types of models, regression and classification, that can be used to predict accident severity. Regression models can provide additional information on the probability of the severity, while classification models focus on the level of severity. Therefore, in this study, I carried out classification modeling.
+I chose a Random Forest Classifier. 
 
+I applied linear models (linear regression, Ridge regression, and Lasso regression), support vector machines (SVM), random forest, and gradient boost models to the dataset, using root mean squared error (RMSE) as the tuning and evaluation metric. For each model, hyperparameters were tuned using the same metric and cross validation. 
 
-# 4 Results
+**Distribution of actual and predicted severity using linear regression with equal weights of samples**
 
-# 5 Discussion
+I also evaluated the models using their ROC curves. 
+
+**Scatter plot of predicted and actual accidents severity of the SVM model.**
 
 # 6 Conclusion
+
 
 # 7 References
 
