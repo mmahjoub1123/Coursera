@@ -29,14 +29,18 @@ There are several problems with the dataset. First, the type of datetime columns
 
 After data cleaning, there were 351362 samples and 27 features in the data. Upon examining the meaning of each feature, it was clear that there was some redundancy in the features. For example, there was a feature of the Traffic_Signal, and another feature of the Crossing, with the difference being that the Traffic_Signal is the presence of road traffic signal, and Crossing is a node where both ways are crossing (footway and street, street and railway and so on). Moreover, I inspected the correlation of independent variables, and found that this pair was highly correlated (Pearson correlation coefficient > 0.9). This makes sense. From these highly correlated features, only one was kept. I decided to keep the Crossing feature.
 
+I studied the relationship between the day of week and the severity, and the relationship between the time of the accident and the severity. 
+I observed that the accidents are more likely to happen during the day (Figure 1), and there are less accidents in the weekend compared to the other week days, this can be explained by the fact that there is less working people and therefore less traffic during the weekend, and for the same reason the accidents are more rare during the night.
+
+![title](dayVSnight.png)
+
 ## 3.3 Predictive modeling
 
 There are two types of models, regression and classification, that can be used to predict accident severity. Regression models can provide additional information on the probability of the severity, while classification models focus on the level of severity. Therefore, in this study, I carried out classification modeling.
-I chose a Random Forest Classifier. 
 
-I applied linear models (linear regression, Ridge regression, and Lasso regression), support vector machines (SVM), random forest, and gradient boost models to the dataset, using root mean squared error (RMSE) as the tuning and evaluation metric. For each model, hyperparameters were tuned using the same metric and cross validation. 
+I applied KNeighbors, Decision Tree, Random Forest, SVM, and LogisticRegression models to the dataset, using root mean squared error (RMSE) as the tuning and evaluation metric. For each model, hyperparameters were tuned using the same metric and cross validation. 
 
-**Distribution of actual and predicted severity using linear regression with equal weights of samples**
+**Distribution of actual and predicted severity using Decision Tree**
 
 I also evaluated the models using their ROC curves. 
 
