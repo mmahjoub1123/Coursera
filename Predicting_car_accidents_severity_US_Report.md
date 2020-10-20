@@ -42,12 +42,15 @@ I applied KNeighbors, Decision Tree, Random Forest, SVM, and LogisticRegression 
 
 **Distribution of actual and predicted severity using Decision Tree**
 
-I also evaluated the models using their ROC curves. 
+I also evaluated the models using their ROC curves.
+
 
 **Scatter plot of predicted and actual accidents severity of the SVM model.**
 
 # 6 Conclusion
+In this study, I analyzed the relationship between car accidents severity and biographic data. I identified dates, days of week, geographical location, day and night time among the most important features that affect an accident severity. I built classification models to predict the accidents severity. These models can be very useful in helping road officers in a number of ways. For example, it could help identify roads to secure and estimate the delay of accidents.
 
+Models in this study mainly focused on neutral features. However, car types and road sizes might also contribute to accident severity. These informations are obviously more difficult to extract, but if optimized, could bring significant improvements to the models.
 
 # 7 References
 
