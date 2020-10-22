@@ -29,10 +29,13 @@ There are several problems with the dataset. First, the type of datetime columns
 
 After data cleaning, there were 351362 samples and 27 features in the data. Upon examining the meaning of each feature, it was clear that there was some redundancy in the features. For example, there was a feature of the Traffic_Signal, and another feature of the Crossing, with the difference being that the Traffic_Signal is the presence of road traffic signal, and Crossing is a node where both ways are crossing (footway and street, street and railway and so on). Moreover, I inspected the correlation of independent variables, and found that this pair was highly correlated (Pearson correlation coefficient > 0.9). This makes sense. From these highly correlated features, only one was kept. I decided to keep the Crossing feature.
 
+![Correlation matrix](correlation_matrix.png)
+
+
 I studied the relationship between the day of week and the severity, and the relationship between the time of the accident and the severity. 
 I observed that the accidents are more likely to happen during the day (Figure 1), and there are less accidents in the weekend compared to the other week days, this can be explained by the fact that there is less working people and therefore less traffic during the weekend, and for the same reason the accidents are more rare during the night.
 
-![title](dayVSnight.png)
+![Relationship with day of week and Sunset/Sunrise](dayVSnight.png)
 
 ## 3.3 Predictive modeling
 
@@ -40,12 +43,10 @@ There are two types of models, regression and classification, that can be used t
 
 I applied KNeighbors, Decision Tree, Random Forest, SVM, and LogisticRegression models to the dataset, using root mean squared error (RMSE) as the tuning and evaluation metric. For each model, hyperparameters were tuned using the same metric and cross validation. 
 
-**Distribution of actual and predicted severity using Decision Tree**
-
-I also evaluated the models using their ROC curves.
+![Top features](top_features.png)
 
 
-**Scatter plot of predicted and actual accidents severity of the SVM model.**
+![Comparison](comparison.png)
 
 # 6 Conclusion
 In this study, I analyzed the relationship between car accidents severity and biographic data. I identified dates, days of week, geographical location, day and night time among the most important features that affect an accident severity. I built classification models to predict the accidents severity. These models can be very useful in helping road officers in a number of ways. For example, it could help identify roads to secure and estimate the delay of accidents.
